@@ -4,8 +4,11 @@
 | Nama | Username GitHub | Kontribusi |
 
 | Fadel Azhar | @azhameer | Navbar, beranda, integrasi, README |
+
 | Muhammad Abduh Arifin | @abduharifin28-coder | Tim interaktif dan footer GitHub |
+
 | Amelia Zahro | @ameng-cell | Awal gagasan dan alur sistem |
+
 | Intan Rizkia Juliani | @cinnamon2278 | Karakter, responsif, dan testing |
 
 ## Deskripsi Project
