@@ -123,7 +123,7 @@ img { display: block; max-width: 100%; }
 .idea-heading { max-width: 800px; margin-bottom: 61px; }
 .idea-heading h2 { font-size: clamp(38px,5vw,65px); }
 .idea-heading h2 em { color: var(--gold); }
-.idea-heading p { max-width: 690px; color: #b4c8bc; font-size: 14bpx; line-height: 1.85; }
+.idea-heading p { max-width: 690px; color: #b4c8bc; font-size: 14px; line-height: 1.85; }
 .idea-layout { display: grid; grid-template-columns: .92fr 1.08fr; gap: 22px; }
 .problem-column, .solution-column { border-radius: 16px; padding: 36px; border: 1px solid rgba(255,255,255,.13); }
 .problem-column { background: rgba(255,255,255,.035); }

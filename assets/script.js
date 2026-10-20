@@ -50,7 +50,7 @@ const sectionObserver = new IntersectionObserver(entries => {
 }, { rootMargin: "-24% 0px -64% 0px" });
 sections.forEach(section => sectionObserver.observe(section));
 
-gagasan atas 
+// Gagasan Atas
 const flowDetails = [
   { title: "Masuk ke Dunia Belajar", text: "Mahasiswa mengakses web pembelajaran dan memilih mata kuliah. Setiap mata kuliah dapat memiliki lingkungan dan rangkaian quest yang relevan dengan materinya." },
   { title: "Eksplorasi Peta 2D", text: "Mahasiswa bebas menjelajahi area yang tersedia pada peta semi-open world dua dimensi, menemukan lokasi misi, serta mempelajari materi yang terhubung dengan lingkungan game." },
@@ -60,7 +60,7 @@ const flowDetails = [
   { title: "Selesaikan atau Masuk Spectator", text: "Setelah semua quest dan kunci diselesaikan, mahasiswa dapat menuju pintu keluar atau, pada konsep pengembangan game sesungguhnya, mengamati aktivitas pemain lain melalui spectator mode." }
 ];
 
-gagasan bawah
+// gagasan bawah
 const flowSteps = document.querySelectorAll(".flow-step");
 flowSteps.forEach(step => {
   step.addEventListener("click", () => {
