@@ -151,3 +151,26 @@ img { display: block; max-width: 100%; }
 .team-footnote { display: flex; justify-content: space-between; gap: 15px; border-top: 1px solid #dcded2; margin-top: 27px; padding-top: 16px; font-size: 11px; color: #66786a; }
 .team-footnote span:first-child { font-weight: 800; color: var(--forest-700); }
 .team-footnote span:last-child { font-size: 9px; letter-spacing: .14em; font-weight: 800; }
+
+/* FOOTER */
+.site-footer { background: #071b15; color: white; border-top: 1px solid rgba(255,255,255,.13); }
+.footer-main { display: grid; grid-template-columns: .75fr 1.25fr; gap: 80px; padding: 68px 0 60px; }
+.footer-brand { display: inline-flex; align-items: center; gap: 9px; font-size: 25px; font-weight: 400; }
+.footer-brand span { color: var(--gold); }
+.footer-brand b { font-weight: 800; }
+.footer-brand-block p { max-width: 340px; line-height: 1.85; font-size: 13px; color: #a7c1ae; }
+.footer-motto { display: block; color: var(--gold); font-weight: 800; font-size: 10px; letter-spacing: .22em; margin-top: 30px; }
+.footer-small-title { color: var(--gold); letter-spacing: .15em; font-size: 11px; font-weight: 800; margin-bottom: 21px; }
+.footer-small-title span { margin-left: 11px; }
+.github-grid { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 10px; }
+.github-card { background: #102c23; border: 1px solid rgba(255,255,255,.1); border-radius: 8px; padding: 12px 15px; display: flex; align-items: center; gap: 11px; min-width: 0; transition: border-color .2s, transform .2s; }
+a.github-card:hover { border-color: #d5b171; transform: translateY(-2px); }
+.github-icon { width: 34px; height: 34px; border-radius: 50%; display: grid; place-items: center; background: rgba(235,193,124,.1); color: #e9c791; flex: none; font-size: 13px; font-weight: 800; }
+.github-details { min-width: 0; }
+.github-details small { display: block; color: #a0bbac; font-size: 10px; margin-bottom: 4px; }
+.github-details strong { display: block; font-size: 12px; color: white; overflow-wrap: anywhere; }
+.github-card.disabled { opacity: .78; cursor: default; }
+.github-note { color: #789889; font-size: 10px; line-height: 1.65; margin: 15px 0 0; }
+.github-note code { color: #d9c99e; }
+.footer-bottom { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 23px 0 27px; border-top: 1px solid rgba(255,255,255,.12); font-size: 11px; color: #91a99a; }
+.footer-bottom a { color: #f1ca8c; white-space: nowrap; }

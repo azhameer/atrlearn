@@ -1,10 +1,10 @@
-//member no 1 atas
+//member atas
 const teamMembers = [
-  { name: "Fadel Azhar M", role: "Innovation Architect", bio: "Informatika 2026 - H1D026007", github: "azhameer", placeholder: "azhameer", color: "#38624d", team: "team/azhar.jpg" },
-  { name: "M.Abduh Arifin", role: "Research Strategist", bio: "Informatika 2026 - H1D026031", github: "abduharifin28-coder", placeholder: "abduharifin28-coder", color: "#5b6b50", team: "team/arif.jpg" },
-  { name: "Amelia Zahro", role: "Literature Analyst", bio: "Informatika 2026 - H1D026001", github: "ameng-cell", placeholder: "ameng-cell", color: "#646d85", team: "team/amel.jpg" },
-  { name: "Intan Rizkia J", role: "Strategic Reviewer", bio: "Informatika 2026 - H1D026037", github: "", placeholder: "cinnamon2278", color: "#786551", team: "team/intan.jpg" },
-  { name: "Zakya Fiby Audya", role: "Research Synthesist", bio: "Informatika 2026 - H1D026045", github: "", placeholder: "username-anggota4", color: "#566b68", team: "team/zakya.jpg" }
+  { name: "Fadel Azhar M", role: "Innovation Architect", bio: "Informatika 2026 - H1D026007", github: "azhameer", placeholder: "azhameer", color: "#38624d", image: "assets/team/azhar1.jpg" },
+  { name: "M.Abduh Arifin", role: "Research Strategist", bio: "Informatika 2026 - H1D026031", github: "abduharifin28-coder", placeholder: "abduharifin28-coder", color: "#5b6b50", image: "assets/team/arif1.jpg" },
+  { name: "Amelia Zahro", role: "Literature Analyst", bio: "Informatika 2026 - H1D026001", github: "ameng-cell", placeholder: "ameng-cell", color: "#646d85", image: "assets/team/amel1.jpg" },
+  { name: "Intan Rizkia J", role: "Strategic Reviewer", bio: "Informatika 2026 - H1D026037", github: "cinnamon2278", placeholder: "cinnamon2278", color: "#786551", image: "assets/team/intan1.jpg" },
+  { name: "Zakya Fiby Audya", role: "Research Synthesist", bio: "Informatika 2026 - H1D026045", github: "zkyfbyady", placeholder: "zkyfbyady", color: "#566b68", image: "assets/team/zakya1.jpg" }
 ];
 
 //beranda dan sistem
@@ -59,7 +59,7 @@ const sectionObserver = new IntersectionObserver(entries => {
 }, { rootMargin: "-24% 0px -64% 0px" });
 sections.forEach(section => sectionObserver.observe(section));
 
-//no. 5 member bawah
+//member bawah
 const teamCards = document.querySelector("#teamCards");
 const githubGrid = document.querySelector("#githubGrid");
 teamMembers.forEach((member, index) => {
@@ -107,6 +107,7 @@ teamMembers.forEach((member, index) => {
   });
   teamCards.appendChild(card);
 
+  // Link dibuat aktif HANYA jika github sudah diisi; username contoh tidak menjadi link palsu.
   const git = document.createElement(member.github ? "a" : "div");
   git.className = `github-card${member.github ? "" : " disabled"}`;
   if (member.github) {
@@ -130,7 +131,8 @@ teamMembers.forEach((member, index) => {
 });
 
 
-//no.8 footer
+
+//footer
 const revealNodes = document.querySelectorAll(".reveal");
 if (reduceMotion || !("IntersectionObserver" in window)) {
   revealNodes.forEach(node => node.classList.add("visible"));
@@ -146,4 +148,3 @@ if (reduceMotion || !("IntersectionObserver" in window)) {
 }
 
 document.querySelector("#currentYear").textContent = String(new Date().getFullYear());
-
