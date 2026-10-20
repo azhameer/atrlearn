@@ -1,3 +1,12 @@
+//member no 1 atas
+const teamMembers = [
+  { name: "Fadel Azhar M", role: "Innovation Architect", bio: "Informatika 2026 - H1D026007", github: "azhameer", placeholder: "azhameer", color: "#38624d", team: "team/azhar.jpg" },
+  { name: "M.Abduh Arifin", role: "Research Strategist", bio: "Informatika 2026 - H1D026031", github: "abduharifin28-coder", placeholder: "abduharifin28-coder", color: "#5b6b50", team: "team/arif.jpg" },
+  { name: "Amelia Zahro", role: "Literature Analyst", bio: "Informatika 2026 - H1D026001", github: "ameng-cell", placeholder: "ameng-cell", color: "#646d85", team: "team/amel.jpg" },
+  { name: "Intan Rizkia J", role: "Strategic Reviewer", bio: "Informatika 2026 - H1D026037", github: "", placeholder: "cinnamon2278", color: "#786551", team: "team/intan.jpg" },
+  { name: "Zakya Fiby Audya", role: "Research Synthesist", bio: "Informatika 2026 - H1D026045", github: "", placeholder: "username-anggota4", color: "#566b68", team: "team/zakya.jpg" }
+];
+
 //beranda dan sistem
 const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
@@ -49,3 +58,92 @@ const sectionObserver = new IntersectionObserver(entries => {
   });
 }, { rootMargin: "-24% 0px -64% 0px" });
 sections.forEach(section => sectionObserver.observe(section));
+
+//no. 5 member bawah
+const teamCards = document.querySelector("#teamCards");
+const githubGrid = document.querySelector("#githubGrid");
+teamMembers.forEach((member, index) => {
+  const card = document.createElement("button");
+  card.className = "team-card";
+  card.type = "button";
+  card.style.setProperty("--tone", member.color);
+  card.setAttribute("aria-expanded", "false");
+  card.setAttribute("aria-label", `Lihat profil ${member.name}, ${member.role}`);
+  const img = document.createElement("img");
+  img.src = member.image;
+  img.alt = "";
+  img.loading = "lazy";
+  const indexTag = document.createElement("span");
+  indexTag.className = "team-card-index";
+  indexTag.textContent = String(index + 1).padStart(2, "0");
+  const corner = document.createElement("span");
+  corner.className = "team-card-corner";
+  corner.setAttribute("aria-hidden", "true");
+  corner.textContent = "↗";
+  const bottom = document.createElement("div");
+  bottom.className = "team-card-bottom";
+  const role = document.createElement("span");
+  role.className = "team-card-role";
+  role.textContent = member.role;
+  const name = document.createElement("h3");
+  name.className = "team-card-name";
+  name.textContent = member.name;
+  const expanded = document.createElement("div");
+  expanded.className = "team-card-expanded";
+  const bio = document.createElement("span");
+  bio.textContent = member.bio;
+  const githubText = document.createElement("span");
+  githubText.className = "member-github";
+  githubText.textContent = `@${member.github || member.placeholder}`;
+  expanded.append(bio, document.createElement("br"), githubText);
+  bottom.append(role, name, expanded);
+  card.append(img, indexTag, corner, bottom);
+  card.addEventListener("click", () => {
+    const wasOpen = card.classList.contains("is-active");
+    const cards = teamCards.querySelectorAll(".team-card");
+    cards.forEach(c => { c.classList.remove("is-active"); c.setAttribute("aria-expanded", "false"); });
+    if (wasOpen) teamCards.classList.remove("has-active");
+    else { teamCards.classList.add("has-active"); card.classList.add("is-active"); card.setAttribute("aria-expanded", "true"); }
+  });
+  teamCards.appendChild(card);
+
+  const git = document.createElement(member.github ? "a" : "div");
+  git.className = `github-card${member.github ? "" : " disabled"}`;
+  if (member.github) {
+    git.href = `https://github.com/${encodeURIComponent(member.github.replace(/^@/, ""))}`;
+    git.target = "_blank";
+    git.rel = "noopener noreferrer";
+    git.setAttribute("aria-label", `GitHub ${member.name}: ${member.github}`);
+  }
+  const icon = document.createElement("span");
+  icon.className = "github-icon";
+  icon.textContent = String(index + 1).padStart(2, "0");
+  const detail = document.createElement("span");
+  detail.className = "github-details";
+  const label = document.createElement("small");
+  label.textContent = member.name;
+  const username = document.createElement("strong");
+  username.textContent = `@${(member.github || member.placeholder).replace(/^@/, "")}`;
+  detail.append(label, username);
+  git.append(icon, detail);
+  githubGrid.appendChild(git);
+});
+
+
+//no.8 footer
+const revealNodes = document.querySelectorAll(".reveal");
+if (reduceMotion || !("IntersectionObserver" in window)) {
+  revealNodes.forEach(node => node.classList.add("visible"));
+} else {
+  const revealObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      entry.target.classList.add("visible");
+      revealObserver.unobserve(entry.target);
+    });
+  }, { threshold: .1 });
+  revealNodes.forEach(node => revealObserver.observe(node));
+}
+
+document.querySelector("#currentYear").textContent = String(new Date().getFullYear());
+
