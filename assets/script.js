@@ -7,6 +7,15 @@ const teamMembers = [
   { name: "Zakya Fiby Audya", role: "Research Synthesist", bio: "Informatika 2026 - H1D026045", github: "zkyfbyady", placeholder: "zkyfbyady", color: "#566b68", image: "assets/team/zakya1.jpg" }
 ];
 
+// char atas
+const characters = [
+  { id: "bima", name: "Bima", gender: "Laki-laki", number: "01", type: "PENJELAJAH", role: "Penjelajah Hutan", trait: "Berani & teliti", description: "Petualang penuh rasa ingin tahu yang gemar menemukan jalur baru di Hutan Logika.", color: "#527a5d", image: "assets/characters/bima.svg" },
+  { id: "arga", name: "Arga", gender: "Laki-laki", number: "02", type: "PEMETA", role: "Pembaca Peta", trait: "Strategis & tenang", description: "Pemetaan wilayah dan rute menjadi kekuatannya saat menghadapi tantangan belajar.", color: "#537a86", image: "assets/characters/arga.svg" },
+  { id: "nara", name: "Nara", gender: "Perempuan", number: "03", type: "PENELITI", role: "Penjelajah Pengetahuan", trait: "Kritis & penasaran", description: "Selalu membawa catatan untuk memahami petunjuk dan mengurai teka-teki dalam quest.", color: "#a27f62", image: "assets/characters/nara.svg" },
+  { id: "sora", name: "Sora", gender: "Perempuan", number: "04", type: "PENGAMAT", role: "Pengamat Alam", trait: "Cermat & kreatif", description: "Peka terhadap detail lingkungan dan senang mengamati berbagai cara menyelesaikan misi.", color: "#8e789e", image: "assets/characters/sora.svg" },
+  { id: "kirana", name: "Kirana", gender: "Perempuan", number: "05", type: "PENEMU", role: "Pencari Kunci", trait: "Gigih & adaptif", description: "Tertarik dengan tantangan baru serta pantang menyerah sampai kunci terakhir ditemukan.", color: "#ad8053", image: "assets/characters/kirana.svg" }
+];
+
 //beranda dan sistem
 const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
@@ -107,7 +116,6 @@ teamMembers.forEach((member, index) => {
   });
   teamCards.appendChild(card);
 
-  // Link dibuat aktif HANYA jika github sudah diisi; username contoh tidak menjadi link palsu.
   const git = document.createElement(member.github ? "a" : "div");
   git.className = `github-card${member.github ? "" : " disabled"}`;
   if (member.github) {
@@ -155,6 +163,64 @@ flowSteps.forEach(step => {
     document.querySelector("#flowDetailText").textContent = flowDetails[index].text;
   });
 });
+
+// char bawah
+const characterPicker = document.querySelector("#characterPicker");
+let selectedCharacter = "bima";
+try {
+  const saved = localStorage.getItem("atr-selected-character");
+  if (characters.some(character => character.id === saved)) selectedCharacter = saved;
+} catch (_) { /* tetap bisa dibuka secara lokal jika storage dibatasi browser */ }
+
+function selectCharacter(id) {
+  const chosen = characters.find(character => character.id === id);
+  if (!chosen) return;
+  selectedCharacter = id;
+  document.querySelectorAll(".character-card").forEach(card => {
+    const active = card.dataset.character === id;
+    card.classList.toggle("is-selected", active);
+    card.setAttribute("aria-pressed", String(active));
+  });
+  document.querySelector("#selectedCharacterImage").src = chosen.image;
+  document.querySelector("#selectedCharacterImage").alt = `Ilustrasi ${chosen.name}, ${chosen.gender}, ${chosen.role}`;
+  document.querySelector("#selectedCharacterNum").textContent = chosen.number;
+  document.querySelector(".preview-watermark").textContent = chosen.number;
+  document.querySelector("#selectedCharacterName").textContent = chosen.name;
+  document.querySelector("#selectedCharacterType").textContent = chosen.type;
+  document.querySelector("#selectedCharacterDesc").textContent = chosen.description;
+  document.querySelector("#selectedCharacterRole").textContent = chosen.role;
+  document.querySelector("#selectedCharacterTrait").textContent = chosen.trait;
+  document.querySelector("#selectedCharacterStatus").textContent = `${chosen.name} dipilih untuk pratinjau karakter.`;
+  try { localStorage.setItem("atr-selected-character", id); } catch (_) { /* optional */ }
+}
+
+characters.forEach(character => {
+  const card = document.createElement("button");
+  card.type = "button";
+  card.className = "character-card";
+  card.dataset.character = character.id;
+  card.setAttribute("aria-label", `Pratinjau ${character.name}, ${character.gender}`);
+  card.setAttribute("aria-pressed", "false");
+  card.style.setProperty("--char-color", character.color);
+  const art = document.createElement("div");
+  art.className = "character-card-art";
+  const img = document.createElement("img");
+  img.src = character.image;
+  img.alt = "";
+  img.loading = "lazy";
+  art.append(img);
+  const label = document.createElement("div");
+  label.className = "character-card-label";
+  const name = document.createElement("strong");
+  name.textContent = character.name;
+  const gender = document.createElement("small");
+  gender.textContent = character.gender;
+  label.append(name, gender);
+  card.append(art, label);
+  card.addEventListener("click", () => selectCharacter(character.id));
+  characterPicker.append(card);
+});
+selectCharacter(selectedCharacter);
 
 
 //footer
