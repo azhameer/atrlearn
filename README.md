@@ -3,7 +3,7 @@
 ## Anggota Kelompok
 | Nama | Username GitHub | Kontribusi |
 
-| Fadel Azhar | @azhameer | Navbar, beranda, integrasi, README |
+| Fadel Azhar Muna | @azhameer | Navbar, beranda, integrasi, README |
 
 | Muhammad Abduh Arifin | @abduharifin28-coder | Tim interaktif dan footer GitHub |
 
